@@ -1,83 +1,57 @@
 import React from 'react'
-import { View, } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
 
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import Feather from 'react-native-vector-icons/Feather'
-import Entypo from 'react-native-vector-icons/Entypo'
+import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import Command from '../../components/commands/command'
 import Statistic from '../../components/statistics/statistics'
+import Load_Font from '../../components/load_fonts'
 
 const Tab = createBottomTabNavigator()
 
 function Tab_Navigation(){
+    Load_Font
+
     return(
         <Tab.Navigator
             initialRouteName="Command"
-            
+            tabBarOptions={{
+                activeTintColor: "white",
+                inactiveTintColor: '#b0bec5',
+                labelStyle:{
+                    fontSize: 12,
+                    fontFamily: "Tauri",
+                    marginBottom: 10
+                },
+                style: {
+                    backgroundColor: '#FF7A00',
+                    height: 60,
+                    
+                }
+            }}
         >
-            <Tab.Screen name="Command" component={Command} options={{tabBarBadge: 3, tabBarIcon: () => <Ionicon style={{color: 'black'}} size={25} name={'ios-home'} />}} />
-            <Tab.Screen name="Statistique" component={Statistic} />
+            <Tab.Screen 
+                name="Command"
+                component={Command}
+                options={{
+                    tabBarBadge: 3,
+                    tabBarLabel: 'Commande',
+                    tabBarIcon: ({color}) => <Material color={color} size={25} name={'cart-plus'} />
+                }}
+            />
+
+            <Tab.Screen
+                name="Statistique"
+                component={Statistic}
+                options={{
+                    tabBarIcon: ({color}) => <Ionicon color={color} size={25} name={'bar-chart-outline'} />
+                }} 
+            />
         </Tab.Navigator>
     )
 }
 
 export default Tab_Navigation
-
-/* const screens = {
-    Command:{
-        screen: Command,
-        navigationOptions:{
-            tabBarLabel: 'Commande',
-            tabBarIcon: () => (
-                <View>
-                    <Ionicon style={{color: 'white'}} size={25} name={'ios-home'} />
-                </View>
-            )
-        }
-    },
-
-    Statistic:{
-        screen: Statistic,
-        navigationOptions:{
-            tabBarLabel: 'Statistic',
-            tabBarIcon: () => (
-                <View>
-                    <Ionicon style={{color: 'white'}} size={25} name={'ios-search'} />
-                </View>
-            )
-        }
-    },
-
-    Commande:{
-        screen: Commande,
-        navigationOptions:{
-            tabBarLabel: 'Commande',
-            tabBarIcon: () => (
-                <View>
-                    <Feather style={{color: 'white'}} size={25} name={'command'} />
-                </View>
-            )
-        }
-    },
-
-    Boutique:{
-        screen: Boutique,
-        navigationOptions:{
-            tabBarLabel: 'Ma Boutique',
-            tabBarIcon: () => (
-                <View>
-                    <Entypo style={{color: 'white'}} size={25} name={'shop'} />
-                </View>
-            )
-        }
-    }
-} 
-
-export default TabNavigator = createMaterialBottomTabNavigator(screens, {
-    initialRouteName: 'Command',
-    activeColor: 'white',
-    inactiveColor: '#616161',
-    barStyle: {backgroundColor: '#FF7A00'}
-})*/
