@@ -1,5 +1,5 @@
-import {createStackNavigator} from 'react-navigation-stack'
-import {createAppContainer} from 'react-navigation'
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
 
 /*
     Import the different screens
@@ -10,7 +10,27 @@ import Terms from '../../components/login_terms_condition/terms_conditions'
 import Market_Place from '../drawer_navigation/drawer_navigation'
 //import Tab from '../tab_navigation/market_place_tab'
 
-const screens = {
+const Stack = createStackNavigator()
+
+function Base_Navigation(){
+    return(
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen name="Slide" component={Slide} />
+            <Stack.Screen name="Terms" component={Terms} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Market" component={Market_Place} />
+        </Stack.Navigator>
+    )
+}
+
+export default Base_Navigation
+
+
+/* const screens = {
     Slide:{
         screen: Slide,
         navigationOptions:{
@@ -42,4 +62,4 @@ const screens = {
 
 const Stack = createStackNavigator(screens)
 
-export default createAppContainer(Stack)
+export default createAppContainer(Stack) */
