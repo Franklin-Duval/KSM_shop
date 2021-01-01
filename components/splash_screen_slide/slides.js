@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     skip:{
         flexDirection: "row",
         position: "absolute",
-        bottom: 25,
+        bottom: 30,
         alignSelf: 'flex-end',
         paddingRight: 20,
     },

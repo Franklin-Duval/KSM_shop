@@ -6,8 +6,9 @@ import Ionicon from 'react-native-vector-icons/Ionicons'
 import Feather from 'react-native-vector-icons/Feather'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import Command from '../../components/commands/command'
-import Statistic from '../../components/statistics/statistics'
+import Market from '../stack_navigation/market_navigation'
+import Command from '../stack_navigation/commande_navigation'
+import Statistic from '../stack_navigation/statistic_navigation'
 import Load_Font from '../../components/load_fonts'
 
 const Tab = createBottomTabNavigator()
@@ -33,6 +34,15 @@ function Tab_Navigation(){
                 }
             }}
         >
+            <Tab.Screen 
+                name="Market"
+                component={Market}
+                options={{
+                    tabBarLabel: 'Market Place',
+                    tabBarIcon: ({color}) => <Material color={color} size={25} name={'store-outline'} />
+                }}
+            />
+            
             <Tab.Screen 
                 name="Command"
                 component={Command}
